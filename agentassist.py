@@ -30,7 +30,7 @@ st.title("🌂 AI Umbrella Assistant")
 st.write("Enter your destination below to see if you'll need protection from the elements.")
 
 # Destination Input & Button
-destination = st.text_input("Destination City:", placeholder="e.g. Paris, Tokyo, New York")
+destination = st.text_input("Destination City:", placeholder="e.g. Kottayam, Kochi, Vaikom")
 check_btn = st.button("Check Weather", type="primary")
 
 # Create a container for the response so it stays in one place
@@ -65,16 +65,17 @@ if check_btn:
                     advice = ai_res.text
                     status.update(label="Weather Check Complete!", state="complete", expanded=False)
                 except Exception as e:
-                    advice = "Assistant bro is shy, but it's gray out there. Take it just in case!"
+                    advice = "Gemini is shy, but if it's gray out there. Take it just in case!"
                     status.update(label="AI Error", state="error")
                 
                 # 2. Response Box (Final Result)
                 with response_container:
                     st.subheader(f"Current Weather in {destination.title()}")
                     st.info(f"**Condition:** {desc.capitalize()} | **Temp:** {temp}°C")
-                    st.markdown("### ✨ I think:")
+                    st.markdown("### ✨ Hey:")
                     st.success(advice)
             else:
                 status.update(label="City Not Found", state="error")
 
                 st.error(f"Could not find weather for '{destination}'. Check your spelling!")
+

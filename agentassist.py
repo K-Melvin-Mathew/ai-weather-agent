@@ -65,15 +65,16 @@ if check_btn:
                     advice = ai_res.text
                     status.update(label="Weather Check Complete!", state="complete", expanded=False)
                 except Exception as e:
-                    advice = "Gemini is shy, but it's gray out there. Take it just in case!"
+                    advice = "Assistant bro is shy, but it's gray out there. Take it just in case!"
                     status.update(label="AI Error", state="error")
                 
                 # 2. Response Box (Final Result)
                 with response_container:
                     st.subheader(f"Current Weather in {destination.title()}")
                     st.info(f"**Condition:** {desc.capitalize()} | **Temp:** {temp}°C")
-                    st.markdown("### ✨ Assistant Advice:")
+                    st.markdown("### ✨ I think:")
                     st.success(advice)
             else:
                 status.update(label="City Not Found", state="error")
+
                 st.error(f"Could not find weather for '{destination}'. Check your spelling!")
